@@ -7,13 +7,22 @@
     font-family: 'Poppins','sans-serif';
 }
 
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('./assets/elysia.jpg')  no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background-color: aquamarine;
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -49,6 +58,7 @@ header {
 }
 
 .navigation a:hover::after{
+    transform-origin: left;
     transform: scaleX(1);
 }
 
