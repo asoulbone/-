@@ -1,0 +1,6 @@
+1.react里input新增的type email ，label上移效果无法生效
+解决方案：
+1.自己设置valid，type改为html4的type
+
+//已解决 
+设置效果是满足input自检的validation后才会停留，如果输入不满足input自身的检测，那会默认没有输入参数而使动态无法生效
