@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import InputBox from "./InputBox";
 
 const Register = () => {
@@ -23,9 +24,9 @@ const Register = () => {
           <div className="login-register">
             <p>
               已经拥有账号？
-              <a href="#" className="login-link">
+              <Link to={"/"}>
                 登录
-              </a>
+              </Link>
             </p>
           </div>
         </form>

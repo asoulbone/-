@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoginBox.css";
 import InputBox from "./InputBox";
+import { Link } from "react-router-dom";
 
 const LoginBox = () => {
   return (
@@ -31,9 +32,9 @@ const LoginBox = () => {
             <div className="login-register">
               <p>
                 没有账号？
-                <a href="#" className="register-link">
+                <Link to={"register"}>
                   注册
-                </a>
+                </Link>
               </p>
             </div>
           </form>

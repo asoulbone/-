@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "./Navbar";
 import LoginBox from "./LoginBox";
 import Register from "./Register";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import ImageTotal from "./ImageTotal";
 import FaceEdit from "./FaceEdit";
 import About from "./About";
@@ -13,9 +13,14 @@ import Management from "./Management";
 import Layout from "./Layout";
 
 function App() {
+
+  const handleClick=()=>{
+    return <Link to={"/"}></Link>
+  }
+
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout handleClick={handleClick}/>}>
         <Route index element={<LoginBox />} />
         <Route path="register" element={<Register />} />
         <Route path="manage" element={<Management />} />

@@ -28,7 +28,7 @@ header {
     margin-left: 15px;
   }
   
-  .navigation a::after {
+  .navigation a:not(:last-child):after {
     content: "";
     position: absolute;
     left: 0;

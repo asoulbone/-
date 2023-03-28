@@ -2,7 +2,9 @@ import React from 'react'
 
 const FaceEdit = () => {
   return (
-    <div>FaceEdit</div>
+    <main>
+      <input type="image" name="image" id="userImage" />上传你的人脸照片
+    </main>
   )
 }
 

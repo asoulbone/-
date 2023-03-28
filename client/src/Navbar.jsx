@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Navbar.css'
+import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ handleClick }) => {
   return (
     <header>
       <h2 className="logo">Hi</h2>
@@ -14,7 +14,11 @@ const Navbar = () => {
         <Link to={"post"}>发布</Link>
         <Link to={"images"}>发布</Link>
         <Link to={"about"}>关于</Link>
-        <button className="btnLogin-popup">登 录</button>
+        <Link to={"/"}>
+          <button className="btnLogin-popup" onClick={handleClick}>
+            登 录
+          </button>
+        </Link>
       </nav>
     </header>
   );
