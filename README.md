@@ -1,5 +1,5 @@
 # 毕设
-## 技术栈（目前）：react html ionicon css 
+## 技术栈（目前）：reactv18 html ionicon css react-router v6.9 vite 
 
 ## 任务
 - [ ] 用户管理
