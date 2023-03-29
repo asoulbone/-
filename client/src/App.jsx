@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Navbar from "./Navbar";
 import LoginBox from "./LoginBox";
 import Register from "./Register";
 import { Link, Route, Routes } from "react-router-dom";
@@ -13,14 +12,9 @@ import Management from "./Management";
 import Layout from "./Layout";
 
 function App() {
-
-  const handleClick=()=>{
-    return <Link to={"/"}></Link>
-  }
-
   return (
     <Routes>
-      <Route path="/" element={<Layout handleClick={handleClick}/>}>
+      <Route path="/" element={<Layout/>}>
         <Route index element={<LoginBox />} />
         <Route path="register" element={<Register />} />
         <Route path="manage" element={<Management />} />

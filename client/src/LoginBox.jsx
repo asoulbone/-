@@ -7,9 +7,10 @@ const LoginBox = () => {
   return (
     <>
       <div className="wrapper">
-        <span className="icon-close">
+          <span className="icon-close">
           <ion-icon name="close"></ion-icon>
-        </span>
+          </span>
+        
         <div className="form-box login">
           <h2>登 录</h2>
           <form action="#">
