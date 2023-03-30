@@ -22,15 +22,7 @@ function App() {
     title:"react",
     url:"./assets/react"
   }])
-
-  const getResponse=async ()=>{
-    const response =fetch("")
-    const iamgeList=await response.json()
-    console.log(iamgeList)
-  }
-
-  getResponse();
-
+  
   return (
     <Routes>
       <Route path="/" element={<Layout/>}>

@@ -33,3 +33,12 @@ img{
 .icon{
     cursor: pointer;
 }
+
+.select button{
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
+}
