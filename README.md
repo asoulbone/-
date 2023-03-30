@@ -17,3 +17,25 @@
 - [ ] 关于
     随便写点文字
 - [x] 用react-router链接所有的页面
+
+## 文件结构
+--client 
+  --src
+   --App
+    --Layout
+     --Navbar
+    --LoginBox
+     --InputBox
+    --Register
+     --InputBox
+    --Management
+    --FaceEdit
+     --Container
+      --InputImage
+      --OutImage
+    --PhotoDecoration
+    --PostPage(发布)
+    --ImageTotal(参观)
+    --About
+    --Missing
+

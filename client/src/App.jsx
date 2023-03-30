@@ -12,6 +12,25 @@ import Management from "./Management";
 import Layout from "./Layout";
 
 function App() {
+
+  const [userImages,setUserImages]=useState([{
+    id:1,
+    title:"elysia",
+    url:"./assets/elysia.jpg"
+  },{
+    id:2,
+    title:"react",
+    url:"./assets/react"
+  }])
+
+  const getResponse=async ()=>{
+    const response =fetch("")
+    const iamgeList=await response.json()
+    console.log(iamgeList)
+  }
+
+  getResponse();
+
   return (
     <Routes>
       <Route path="/" element={<Layout/>}>

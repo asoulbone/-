@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginBox.css";
+import "./loginBox.css";
 import InputBox from "./InputBox";
 import { Link } from "react-router-dom";
 

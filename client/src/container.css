@@ -1,0 +1,27 @@
+.Container{
+    width: 1400px;
+    height: 800px;
+    margin-top: 100px;
+    border: 1px solid #162916;
+    border-radius: 20px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0,0, .5);
+    display: flex;
+    flex-flow: row;
+    position: relative;
+}
+
+.canvas{
+    width: 600px;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: 70px;
+    background-color: #134ece58;
+    border: 1px solid #162916;
+    box-shadow: 0 0 20px rgba(19, 62, 231, 0.379);
+    border-radius: 10px;
+}
