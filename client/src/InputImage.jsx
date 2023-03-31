@@ -1,36 +1,20 @@
 import React from "react";
-import { useState } from "react";
-import axios from 'axios'
 import "./inputImage.css";
 
-const InputImage = () => {
-  const [image, setImage] = useState(null);
-
-  const [fileName, setFileName] = useState("没有选择的图片");
-
-  const [processedImage, setProcessedImage] = useState(null);
-
-  const handleChangeSex=async ()=>{
-    const formData=new FormData();
-    formData.append('image',image)
-    try{
-        const response=await axios.post('/api/process_image',formData,{
-            headers:{
-                'Content-Type':'multipart/form-data'
-            },
-            responseType:'arraybuffer'
-        })
-        if(!response.ok) throw Error("Please reload")
-        // Buffer 用于处理二进制数据文件
-        setProcessedImage(Buffer.form(response.data).toString('base64'))
-    }catch(err){
-        console.error(err)
-    }
-  }
-
+const InputImage = ({
+  handleChangeSex,
+  setFileName,
+  setImageURL,
+  setImage,
+  imageURL,
+  fileName,
+  setFile,
+  setProcessedImage,
+}) => {
   return (
     <section>
       <form
+        className="imageinput"
         onSubmit={(e) => e.preventDefault()}
         onClick={() => document.querySelector(".input-field").click()}
       >
@@ -42,13 +26,15 @@ const InputImage = () => {
           onChange={({ target: { files } }) => {
             files[0] && setFileName(files[0].name);
             if (files) {
-              setImage(URL.createObjectURL(files[0]));
+              setFile(files[0]);
+              setImageURL(URL.createObjectURL(files[0]));
+              setProcessedImage(null);
             }
           }}
         />
 
-        {image ? (
-          <img src={image} alt={fileName} />
+        {imageURL ? (
+          <img src={imageURL} alt={fileName} />
         ) : (
           <>
             <span>
@@ -78,10 +64,9 @@ const InputImage = () => {
         </span>
       </section>
 
-    <div className="select">
+      <div className="select">
         <button onClick={handleChangeSex}>转换性别</button>
-    </div>
-      
+      </div>
     </section>
   );
 };

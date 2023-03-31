@@ -1,5 +1,5 @@
 # 毕设
-## 技术栈（目前）：reactv18 html ionicon css react-router v6.9 vite 
+## 技术栈（目前）：reactv18 html ionicon css react-router v6.9 vite javascript react hook axios
 
 ## 任务
 - [ ] 用户管理

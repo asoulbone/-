@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import "./inputImage.css";
 
-const OutImage = () => {
+const OutImage = ({ processedImage }) => {
   return (
-    <div>OutImage</div>
-  )
-}
+    <section>
+      <div className="imageinput">
+        {processedImage ? (
+          <img src={processedImage} width={100} height={100} />
+        ) : (
+          <label>Loading</label>
+        )}
+      </div>
+    </section>
+  );
+};
 
-export default OutImage
+export default OutImage;
