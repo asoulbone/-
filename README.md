@@ -1,5 +1,6 @@
 # 毕设
 ## 技术栈（目前）：reactv18 html ionicon css react-router v6.9 vite javascript react hook axios
+## 使用到的工具：vscode postman datagrip 
 
 ## 任务
 - [ ] 用户管理
