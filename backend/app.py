@@ -44,6 +44,9 @@ posts_schema = PostSchema(many=True)
 
 # 得到所有的已发布信息
 
+@app.route('/', methods=['GET'])
+def get_hello():
+    return {"hello":"world"}
 
 @app.route('/get_post', methods=['GET'])
 def get_post():

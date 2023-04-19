@@ -3,10 +3,10 @@
     height: 500px;
     margin-top: 40px;
     margin-left: 50px;
-    background-color: rgba(223, 225, 186, 0.55);
+    background-color: rgba(210, 230, 234, 0.394);
     border-radius: 6px;
-    border: solid 1px rgba(229, 230, 185, 0.902);
-    box-shadow: 0 0 20px rgba(229, 230, 185, 0.902);
-    display: flex;
+    border: solid 1px rgba(218, 226, 230, 0.884);
+    box-shadow: 0 0 20px rgba(241, 248, 255, 0.617);
     justify-content: center;
+    color: rgb(231, 136, 228);
 }
