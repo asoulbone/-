@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+# flask_cors 允许跨域（跨域：不同ip之间访问即为跨域）
 from flask_cors import CORS
 import subprocess
 from flask import send_file
@@ -31,6 +32,21 @@ class Post(db.Model):
         self.body = body
         self.image_path = image_path
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    userName = db.Column(db.String(100))
+    email = db.Column(db.String(30))
+    password = db.Column(db.String(100))
+    tel = db.Column(db.String(11))
+    introduce=db.Column(db.Text())
+
+    def __init__(self,userName,email,password,tel,introduce):
+        self.userName=userName
+        self.email=email
+        self.password=password
+        self.tel=tel
+        self.introduce=introduce
+
 # 创建模式
 
 
@@ -41,6 +57,14 @@ class PostSchema(ma.Schema):
 
 post_schema = PostSchema()
 posts_schema = PostSchema(many=True)
+
+class UserSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'userName', 'email', 'password', 'tel','introduce')
+
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 # 得到所有的已发布信息
 
@@ -76,7 +100,7 @@ def create_post():
     db.session.commit()
     return post_schema.jsonify(post)
 
-# 根据id更新信息
+# 根据id更新信息(PUT必须一次更新所有信息，不能单独更新某条信息)
 
 
 @app.route('/update_post/<id>/', methods=['PUT'])
@@ -102,6 +126,20 @@ def delete_postById(id):
     db.session.delete(postById)
     db.session.commit()
     return post_schema.jsonify(postById)
+
+# 创建新用户
+@app.route('/create_user', methods=['POST'])
+def create_user():
+    userName = request.json['userName']
+    email = request.json['email']
+    password = request.json['password']
+    tel = request.json['tel']
+    introduce = request.json['introduce']
+
+    user = User(userName, email, password,tel,introduce)
+    db.session.add(user)
+    db.session.commit()
+    return user_schema.jsonify(user)
 
 
 @app.route('/api/process_image', methods=['POST'])

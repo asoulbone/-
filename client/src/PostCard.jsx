@@ -1,11 +1,21 @@
 import React from "react";
+import "./postCard.css";
 
-const PostCard = () => {
+const PostCard = ({ posts }) => {
   return (
-    <div className="postCard">
-      <h1>发布人：Elysia</h1>
-      <section>这是我合成得照片！</section>
-      <img src="https://i0.hdslb.com/bfs/banner/2889ad4de8a960cdd15367e651c7bf081b10dbb0.jpg@976w_550h_1c_!web-home-carousel-cover.avif"></img>
+    <div className="postCardContainer">
+      {posts &&
+        posts.map((post) => {
+          return (
+            <div className="postCard" key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+              <img src={post.image_path} />
+              <p>{post.date}</p>
+            </div>
+          );
+        })}
+      ;
     </div>
   );
 };
