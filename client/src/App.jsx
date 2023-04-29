@@ -12,20 +12,9 @@ import Management from "./Management";
 import Layout from "./Layout";
 
 function App() {
-
-  const [userImages,setUserImages]=useState([{
-    id:1,
-    title:"elysia",
-    url:"./assets/elysia.jpg"
-  },{
-    id:2,
-    title:"react",
-    url:"./assets/react"
-  }])
-  
   return (
     <Routes>
-      <Route path="/" element={<Layout/>}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<LoginBox />} />
         <Route path="register" element={<Register />} />
         <Route path="manage" element={<Management />} />

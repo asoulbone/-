@@ -1,14 +1,18 @@
+import jwt
 from flask import Flask, request, jsonify
 # flask_cors 允许跨域（跨域：不同ip之间访问即为跨域）
 from flask_cors import CORS
 import subprocess
 from flask import send_file
 from flask_sqlalchemy import SQLAlchemy
-import datetime
+from datetime import datetime,timedelta
+from werkzeug.exceptions import BadRequest,Unauthorized
 from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
 CORS(app)
+# jwt
+app.config['SECRET_KEY']='G\\x01\\xc1*g%I\\xbcl'
 # 配置mysql
 app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:Y713xch9@localhost/editm'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -25,7 +29,7 @@ class Post(db.Model):
     title = db.Column(db.String(100))
     body = db.Column(db.Text())
     image_path = db.Column(db.String(300))
-    date = db.Column(db.DateTime, default=datetime.datetime.now)
+    date = db.Column(db.DateTime, default=datetime.now)
 
     def __init__(self, title, body, image_path):
         self.title = title
@@ -141,6 +145,86 @@ def create_user():
     db.session.commit()
     return user_schema.jsonify(user)
 
+# jwt身份验证，返回jwt令牌
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.json['email']
+    password = request.json['password']
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+
+    if user.password != password:
+        return jsonify({'message': 'Incorrect password'}), 401
+
+    expiry = datetime.utcnow() + timedelta(days=7)
+
+    token = jwt.encode({
+        'user_id': user.id,
+        'exp': expiry,
+    }, app.config['SECRET_KEY'], algorithm='HS256')
+
+    return jsonify({'token': token})
+
+# 获取当前用户：
+def get_current_user():
+    # 从请求头获取Authorization的值
+    auth_header=request.headers.get('Authorization')
+
+    if not auth_header:
+        return Unauthorized('Missing authorization header')
+    
+    #如果 Authorization 字段的值不是以 Bearer 开头，则认为它是无效的
+    parts=auth_header.split()
+
+    if len(parts)!=2 or parts[0].lower()!='bearer':
+        raise Unauthorized('Invalid authorization header')
+    
+    token=parts[1]
+
+    try:
+        # 解码jwt令牌，获取用户id
+        payload=jwt.decode(token,app.config['SECRET_KEY'])
+        user_id=payload['user_id']
+    except jwt.ExpiredSignatureError:
+        raise Unauthorized('Token has expired')
+    except (jwt.DecodeError,jwt.InvalidTokenError):
+        raise Unauthorized('Invalid token')
+    
+    # 获取当前用户信息
+    user =User.query.get(user_id)
+
+    if not user:
+        raise Unauthorized('User not found')
+    
+    return user
+
+# 获取当前用户信息
+@app.route('/user_info',methods=['GET'])
+def get_userInfo():
+    try:
+        # 验证jwt，获取当前用户
+        current_user=get_current_user()
+
+        # 返回用户信息
+        return jsonify({
+            'id': current_user.id,
+            'userName': current_user.userName,
+            'email': current_user.email,
+            'tel': current_user.tel,
+            'introduce': current_user.introduce
+        })
+    except BadRequest as e:
+        # 处理错误请求
+        return jsonify({'message': str(e)}), 400
+    except Unauthorized as e:
+        # 处理未授权的请求
+        return jsonify({'message': str(e)}), 401
+    except Exception as e:
+        # 处理其他错误
+        return jsonify({'message': 'Internal server error'}), 500
 
 @app.route('/api/process_image', methods=['POST'])
 def process_image():

@@ -47,6 +47,17 @@ const Register = () => {
       });
   };
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
+    if (name !== "confirmPassword") {
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+  };
+
   return (
     <div className="wrapper">
       <span className="icon-close">
@@ -60,42 +71,42 @@ const Register = () => {
             inputType={"text"}
             iconName={"person"}
             name={"userName"}
-            setFormData={setFormData}
+            handleChange={handleChange}
           />
           <InputBox
             title={"邮箱"}
             inputType={"email"}
             iconName={"mail"}
             name={"email"}
-            setFormData={setFormData}
+            handleChange={handleChange}
           />
           <InputBox
             title={"密码"}
             inputType={"password"}
             iconName={"lock-closed"}
             name={"password"}
-            setFormData={setFormData}
+            handleChange={handleChange}
           />
           <InputBox
             title={"确认密码"}
             inputType={"password"}
             iconName={"lock-closed-outline"}
             name={"confirmPassword"}
-            setFormData={setFormData}
+            handleChange={handleChange}
           />
           <InputBox
             title={"手机号"}
             inputType={"tel"}
             iconName={"call"}
             name={"tel"}
-            setFormData={setFormData}
+            handleChange={handleChange}
           />
           <InputBox
             title={"用户签名"}
             inputType={"text"}
             iconName={"chatbox-ellipses"}
             name={"introduce"}
-            setFormData={setFormData}
+            handleChange={handleChange}
           />
           <button type="submit" className="login-btn">
             注册

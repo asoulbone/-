@@ -1,9 +1,29 @@
 import React from "react";
 import "./loginBox.css";
 import InputBox from "./InputBox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const LoginBox = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/login", { email, password })
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        navigate("/manage");
+      })
+      .catch((err) => {
+        setMessage(err.response.data.message);
+      });
+  };
+
   return (
     <div className="wrapper">
       <span className="icon-close">
@@ -12,12 +32,21 @@ const LoginBox = () => {
 
       <div className="form-box login">
         <h2>登 录</h2>
-        <form action="#">
-          <InputBox title={"邮箱"} inputType={"email"} iconName={"mail"} />
+        <form onSubmit={handleLogin}>
+          <InputBox
+            title={"邮箱"}
+            inputType={"email"}
+            iconName={"mail"}
+            name={"email"}
+            handleChange={(e) => setEmail(e.target.value)}
+          />
           <InputBox
             title={"密码"}
             inputType={"password"}
+            name={"password"}
             iconName={"lock-closed"}
+            setPassword={setPassword}
+            handleChange={(e) => setPassword(e.target.value)}
           />
           <div className="remember-forgot">
             <label htmlFor="check">
@@ -36,6 +65,7 @@ const LoginBox = () => {
             </p>
           </div>
         </form>
+        {message && <div className="error-message">{message}</div>}
       </div>
     </div>
   );
