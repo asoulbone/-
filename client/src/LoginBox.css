@@ -139,3 +139,9 @@
   .login-register p a:hover{
     text-decoration: underline;
   }
+
+  .error-message{
+    color: rgb(252, 235, 235);
+    font-size: 50px;
+    text-align: center;
+  }
