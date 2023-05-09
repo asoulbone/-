@@ -4,7 +4,9 @@ import PostCard from "./PostCard";
 const PostPage = () => {
   return (
     <main>
-      <div></div>
+      <div className="Container">
+        <h1>发布你的文章吧~</h1>
+      </div>
     </main>
   );
 };

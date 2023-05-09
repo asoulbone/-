@@ -10,9 +10,8 @@ from werkzeug.exceptions import BadRequest,Unauthorized
 from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
-CORS(app)
-# jwt
-app.config['SECRET_KEY']='G\\x01\\xc1*g%I\\xbcl'
+
+CORS(app,supports_credentials=True)
 
 
 # 配置mysql
@@ -161,6 +160,36 @@ def login():
         return jsonify({'message': '密码错误！'}), 401
     
     return jsonify(user.id)
+
+# 通过本地保存的用户id获取该用户的所有信息
+@app.route('/user_info/<id>/',methods=['GET'])
+def get_userInfo(id):
+    userById = User.query.get(id)
+    return user_schema.jsonify(userById)
+
+# 通过id更新用户修改的数据
+@app.route('/update_user/<id>/', methods=['PUT'])
+def update_userById(id):
+    userById = User.query.get(id)
+
+    userName = request.json['userName']
+    email = request.json['email']
+    password = request.json['password']
+    tel = request.json['tel']
+    introduce = request.json['introduce']
+
+# 必须设置所有的属性，不能空着不改
+    userById.userName = userName
+    userById.email = email
+    userById.password = password
+    userById.tel = tel
+    userById.introduce = introduce
+
+    db.session.commit()
+    return user_schema.jsonify(userById)
+
+# @app.route('/update_userinfo',methods=['PATCH'])
+
 
 # # jwt身份验证，返回jwt令牌
 # @app.route('/login', methods=['POST'])
