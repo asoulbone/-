@@ -1,0 +1,62 @@
+.Container4{
+    width: 600px;
+    margin-top: 100px;
+    padding: 30px;
+    border: 1px solid #162916;
+    border-radius: 20px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0,0, .5);
+    text-align: center;
+}
+
+.Container4 form {
+    color: aliceblue;
+    font-size: 20px;
+    width: auto; /* 输入框宽度自动撑开 */
+    height: auto; /* 输入框高度自动撑开 */
+    resize: none; /* 禁止用户调整输入框大小 */
+}
+
+  .Container4 form > div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .Container4 form label {
+      text-align: right;
+      margin-right: 10px;
+      flex-shrink: 0;
+      width: 100px; /* 调整宽度以适应您的需求 */
+    }
+    
+    .Container4 form input[type="text"],
+    .Container4 form textarea {
+      flex: 1;
+    }
+
+    .image-container img{
+        width: 50%;
+    }
+
+    .Container4 form input[type="text"],
+    .Container4 form textarea {
+      width: auto;
+      height: auto;
+      resize: none;
+    }
+
+    .Container4 p{
+        color: aliceblue;
+        font-size: 30px;
+    }
+
+    .Container4 button{
+        width: 120px;
+        background-color: rgba(160, 164, 160, 0.837);
+        border-radius: 10px;
+        border: 1px solid ;
+    }
+
+    

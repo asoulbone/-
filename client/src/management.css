@@ -60,3 +60,14 @@ h1{
 .eyes ion-icon{
     margin-top: 5px;
 }
+
+.alertUnlogin{
+    width: 400px;
+    border: 1px solid ;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(123, 141, 141);
+    padding: 10px;
+}

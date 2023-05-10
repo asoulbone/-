@@ -10,6 +10,11 @@ const Management = () => {
   const userId = localStorage.getItem("userId"); // 从localStorage中获取userID
 
   useEffect(() => {
+    if (!userId) {
+      // User is not logged in, handle the case here
+      return;
+    }
+
     axios
       .get(`http://127.0.0.1:5000/user_info/${userId}/`)
       .then((response) => {
@@ -48,6 +53,10 @@ const Management = () => {
     setShowPassword(!showPassword);
   };
 
+  if (!userId) {
+    return <div className="alertUnlogin">You are not logged in.</div>; // Display a message if userId is not available (user not logged in)
+  }
+
   return (
     <div className="Container3">
       <table className="user-info">
@@ -79,7 +88,10 @@ const Management = () => {
                     onChange={handleInputChange}
                     readOnly={!isEditing}
                   />
-                  <button className="eyes" onClick={handlePasswordVisibilityToggle}>
+                  <button
+                    className="eyes"
+                    onClick={handlePasswordVisibilityToggle}
+                  >
                     {showPassword ? (
                       <ion-icon name="eye"></ion-icon>
                     ) : (

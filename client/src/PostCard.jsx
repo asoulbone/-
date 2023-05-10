@@ -10,7 +10,7 @@ const PostCard = ({ posts }) => {
             <div className="postCard" key={post.id}>
               <h2>{post.title}</h2>
               <p>{post.body}</p>
-              <img src={post.image_path} />
+              <img src={post.image_url} />
               <p>{post.date}</p>
             </div>
           );

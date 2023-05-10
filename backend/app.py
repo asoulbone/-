@@ -27,15 +27,17 @@ ma = Marshmallow(app)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    userId=db.Column(db.Integer)
     title = db.Column(db.String(100))
     body = db.Column(db.Text())
-    image_path = db.Column(db.String(300))
+    image_url = db.Column(db.String(300))
     date = db.Column(db.DateTime, default=datetime.now)
 
-    def __init__(self, title, body, image_path):
+    def __init__(self, userId,title, body, image_url):
+        self.userId=userId
         self.title = title
         self.body = body
-        self.image_path = image_path
+        self.image_url = image_url
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -57,7 +59,7 @@ class User(db.Model):
 
 class PostSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'title', 'body', 'image_path', 'date')
+        fields = ('id', 'userId','title', 'body', 'image_url', 'date')
 
 
 post_schema = PostSchema()
@@ -92,15 +94,16 @@ def get_postById(id):
     return post_schema.jsonify(postById)
 
 # 创建一条新的发布信息
-
-
 @app.route('/create_post', methods=['POST'])
 def create_post():
-    title = request.json['title']
-    body = request.json['body']
-    image_path = request.json['image_path']
+    userId = request.form.get('userId')
+    title = request.form.get('title')
+    body = request.form.get('body')
+    image_url = request.form.get('image_url')
 
-    post = Post(title, body, image_path)
+    print(userId,title,body,image_url)
+
+    post = Post(userId,title, body, image_url)
     db.session.add(post)
     db.session.commit()
     return post_schema.jsonify(post)
@@ -112,14 +115,16 @@ def create_post():
 def update_postById(id):
     postById = Post.query.get(id)
 
+    userId = request.json['userId']
     title = request.json['title']
     body = request.json['body']
-    image_path = request.json['image_path']
+    image_url = request.json['image_url']
 
 # 必须设置所有的属性，不能空着不改
+    postById.userId = userId
     postById.title = title
     postById.body = body
-    postById.image_path = image_path
+    postById.image_url = image_url
 
     db.session.commit()
     return post_schema.jsonify(postById)
