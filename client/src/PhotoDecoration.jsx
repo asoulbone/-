@@ -186,7 +186,7 @@ const PhotoDecoration = () => {
         <div className="wrapper2">
           <div className="editor-panel">
             <div className="filter">
-              <label lassName="title">滤镜</label>
+              <label className="title">滤镜</label>
               <div className="options">
                 {options.map((option) => (
                   <button
@@ -217,7 +217,7 @@ const PhotoDecoration = () => {
               </div>
             </div>
             <div className="rotate">
-              <label lassName="title">旋转</label>
+              <label className="title">旋转</label>
               <div className="options">
                 {rotates.map((rotate) => (
                   <button

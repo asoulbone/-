@@ -3,6 +3,8 @@ import "./inputImage.css";
 
 const InputImage = ({
   handleChangeSex,
+  handleChangeAge,
+  handleChangeAnime,
   setFileName,
   setImageURL,
   setImage,
@@ -66,6 +68,8 @@ const InputImage = ({
 
       <div className="select">
         <button onClick={handleChangeSex}>转换性别</button>
+        <button onClick={handleChangeAge}>转换年龄</button>
+        <button onClick={handleChangeAnime}>动漫化</button>
       </div>
     </section>
   );

@@ -38,8 +38,6 @@ const Management = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          // 禁用 Cors 预检，用于避免浏览器 CORS 机制导致的问题
-          // 更多信息请参考 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
           withCredentials: true,
         }
       )

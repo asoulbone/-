@@ -1,62 +1,140 @@
-.Container4{
-    width: 600px;
-    margin-top: 100px;
-    padding: 30px;
-    border: 1px solid #162916;
-    border-radius: 20px;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0,0, .5);
-    text-align: center;
+.Container4 {
+  width: 600px;
+  margin-top: 100px;
+  padding: 30px;
+  border: 1px solid #162916;
+  border-radius: 20px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 1;
+  position: relative;
 }
 
 .Container4 form {
-    color: aliceblue;
-    font-size: 20px;
-    width: auto; /* 输入框宽度自动撑开 */
-    height: auto; /* 输入框高度自动撑开 */
-    resize: none; /* 禁止用户调整输入框大小 */
+  color: aliceblue;
+  font-size: 20px;
+  width: auto; /* 输入框宽度自动撑开 */
+  height: auto; /* 输入框高度自动撑开 */
+  resize: none; /* 禁止用户调整输入框大小 */
 }
 
-  .Container4 form > div {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    
-    .Container4 form label {
-      text-align: right;
-      margin-right: 10px;
-      flex-shrink: 0;
-      width: 100px; /* 调整宽度以适应您的需求 */
-    }
-    
-    .Container4 form input[type="text"],
-    .Container4 form textarea {
-      flex: 1;
-    }
+.Container4 form > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-    .image-container img{
-        width: 50%;
-    }
+.Container4 form label {
+  text-align: right;
+  margin-right: 10px;
+  flex-shrink: 0;
+  width: 100px; /* 调整宽度以适应您的需求 */
+}
 
-    .Container4 form input[type="text"],
-    .Container4 form textarea {
-      width: auto;
-      height: auto;
-      resize: none;
-    }
+.Container4 form input[type="text"],
+.Container4 form textarea {
+  flex: 1;
+}
 
-    .Container4 p{
-        color: aliceblue;
-        font-size: 30px;
-    }
+.image-container img {
+  width: 50%;
+}
 
-    .Container4 button{
-        width: 120px;
-        background-color: rgba(160, 164, 160, 0.837);
-        border-radius: 10px;
-        border: 1px solid ;
-    }
+.Container4 form input[type="text"],
+.Container4 form textarea {
+  width: auto;
+  height: auto;
+  resize: none;
+}
 
-    
+.Container4 p {
+  color: aliceblue;
+  font-size: 30px;
+}
+
+.Container4 button {
+  width: 120px;
+  background-color: rgba(160, 164, 160, 0.837);
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.postBG {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.popup {
+  z-index: 2;
+  position: absolute;
+  background: #b2bbc2;
+  width: 1400px;
+  max-height: 900px;
+  overflow: auto;
+  border-radius: 20px;
+  border: 1px solid #adc3ad6b;
+  display: flex;
+}
+
+.orz{
+  flex: 0 0 300px;
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ccard img{
+  width: 50;
+}
+
+.popup button {
+  display: block;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.popup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ccard {
+  flex: 0 0 300px;
+  margin: 10px;
+}
+
+.popup button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.popup::after {
+  content: "";
+  flex: auto;
+}
+
+.popup .orz {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.popup .ccard {
+  flex: 0 0 300px;
+  margin: 40px;
+}
+
+.popup .ccard img {
+  max-width: 100%;
+  height: auto;
+}

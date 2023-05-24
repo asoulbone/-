@@ -100,3 +100,6 @@ CORS(app, supports_credentials=True)  # 注意这里需要设置 supports_creden
 不过对应毕设应该够了，这个感觉有点像new啊，不过我new到后来也没释放了23333.。。。。
 
 然后明天把服务器环境搭起来，把照片编辑的功能加上，还有下载照片的功能也加上，然后录个视频给老师看，ok后开始写论文初稿
+
+百度api access Token
+{'refresh_token': '25.916ec8c1b1bbd55aff32d2fa29f5451a.315360000.1999491621.282335-33571003', 'expires_in': 2592000, 'session_key': '9mzdDcTgKnIZd8z6sbniDrxAS3FF9xSo7lyCB6BtzDHfSBryitmw+QDHceHOui5ReJ1GS+EcV9eT2oLKUDKHmnN8raHuIw==', 'access_token': '24.62c036a21b934eb43339eb6ade055115.2592000.1686723621.282335-33571003', 'scope': 'public brain_all_scope vis-faceverify_faceverify_h5-face-liveness vis-faceverify_FACE_V3 vis-faceverify_idl_face_merge vis-faceverify_FACE_EFFECT vis-faceverify_face_beauty vis-faceverify_face_feature_sdk brain_face_scene_scope wise_adapt lebo_resource_base lightservice_public hetu_basic lightcms_map_poi kaidian_kaidian ApsMisTest_Test权限 vis-classify_flower lpq_开放 cop_helloScope ApsMis_fangdi_permission smartapp_snsapi_base smartapp_mapp_dev_manage iop_autocar oauth_tp_app smartapp_smart_game_openapi oauth_sessionkey smartapp_swanid_verify smartapp_opensource_openapi smartapp_opensource_recapi fake_face_detect_开放Scope vis-ocr_虚拟人物助理 idl-video_虚拟人物助理 smartapp_component smartapp_search_plugin avatar_video_test b2b_tp_openapi b2b_tp_openapi_online smartapp_gov_aladin_to_xcx', 'session_secret': 'e4bac0dfef4c48e7108cebfee1a892c5'}

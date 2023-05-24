@@ -34,6 +34,46 @@ const Container = () => {
     }
   };
 
+  const handleChangeAge = async () => {
+    const formData = new FormData();
+    formData.append("image", file);
+    console.log(formData);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/api/process_image_age",
+        formData,
+        {
+          responseType: "arraybuffer",
+        }
+      );
+      const blob = new Blob([response.data], { type: "image/png" });
+      const url = URL.createObjectURL(blob);
+      setProcessedImage(url);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChangeAnime = async () => {
+    const formData = new FormData();
+    formData.append("image", file);
+    console.log(formData);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/api/process_image_anime",
+        formData,
+        {
+          responseType: "arraybuffer",
+        }
+      );
+      const blob = new Blob([response.data], { type: "image/png" });
+      const url = URL.createObjectURL(blob);
+      setProcessedImage(url);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="Container">
       <div className="canvas">
@@ -43,6 +83,8 @@ const Container = () => {
           fileName={fileName}
           setFileName={setFileName}
           handleChangeSex={handleChangeSex}
+          handleChangeAge={handleChangeAge}
+          handleChangeAnime={handleChangeAnime}
           file={file}
           setFile={setFile}
           setProcessedImage={setProcessedImage}

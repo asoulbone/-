@@ -29,13 +29,22 @@ const LoginBox = () => {
       });
   };
 
+  const handleLogout=()=>{
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("userId");
+    window.location.reload();
+  }
+
   return (
     <div className="wrapper">
       <span className="icon-close">
         <ion-icon name="close"></ion-icon>
       </span>
       {isLogin ? (
-        <h1>您已登录</h1>
+        <div>
+          <h1>您已登录</h1>
+          <button onClick={handleLogout}>退出登录</button>
+        </div>
       ) : (
         <div className="form-box login">
           <h2>登 录</h2>
